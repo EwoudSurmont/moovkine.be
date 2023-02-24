@@ -13,15 +13,17 @@ const { title = "Home" } = Astro.props
 	</div>
 	
 	<div class="bg-brand-green flow-root">
-	  <div data-parallax="scroll" data-image-src="/img/home_intro.jpg" data-z-index="100" data-speed="0.9" class="sm:mx-8 md:mx-16 h-96 -mt-48"></div>
-	  <div class="max-w-screen-lg mx-auto px-8 md:px-16 py-20 md:py-40 text-center ">
-		<h1 class="text-4xl font-bold mb-4 text-white">To move/Bewegen</h1>
-		<p class="text-xl text-white">To move/Bewegen en terug in beweging komen is van groot belang tijdens elke revalidatie. Bewegen staat dan ook centraal in de meeste van mijn behandelingen. Voor een optimaal resultaat van de behandeling vraag ik ook een actieve medewerking van de patiënt. MOOV staat garant voor een persoonlijke en doelgerichte aanpak voor elke specifieke lichamelijke klacht. </p>
-	  </div>
+		<div class="wrapper h-96 md:mx-16 -mt-48">
+			<img src="/img/home_intro.jpg" alt="foto van een behandeling" class="introphoto h-96 w-full object-cover object-center">
+		</div>
+		<div class="max-w-screen-lg mx-auto px-8 md:px-16 py-20 md:py-40 text-center ">
+			<h1 class="text-4xl font-bold mb-4 text-white">To move/Bewegen</h1>
+			<p class="text-xl text-white">To move/Bewegen en terug in beweging komen is van groot belang tijdens elke revalidatie. Bewegen staat dan ook centraal in de meeste van mijn behandelingen. Voor een optimaal resultaat van de behandeling vraag ik ook een actieve medewerking van de patiënt. MOOV staat garant voor een persoonlijke en doelgerichte aanpak voor elke specifieke lichamelijke klacht. </p>
+		</div>
 	</div>
 	
 	<div class="mx-auto px-8 md:px-16 py-20 md:py-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center">
-	  <img src="/img/home_behandelingen.jpg" alt="foto" class="hidden md:block md:object-cover md:h-full">
+	  <img src="/img/home_behandelingen.jpg" alt="foto van een behandeling" class="hidden md:block md:object-cover md:h-full">
 	  <div class="md:py-16">
 		<h1 class="text-4xl font-bold mb-4">Behandelingen</h1>
 		<p class="text-xl">Voor volgende behandelingen kunt u bij MOOV terecht:</p>
@@ -41,3 +43,13 @@ const { title = "Home" } = Astro.props
 <style>
 /* Styles */
 </style>
+
+<script>
+	import simpleParallax from 'simple-parallax-js';
+	
+	const image = document.getElementsByClassName('introphoto');
+	new simpleParallax(image, {
+		scale: 1.2,
+		customWrapper: '.wrapper',
+	});
+</script>

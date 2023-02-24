@@ -5,20 +5,20 @@ import navData from "../data/navData"
 ---
 
 <header>
-	<nav class="border-b p-6 bg-white">
-	  <div class="xl:container xl:mx-auto flex items-center justify-between flex-wrap">
+	<nav class="border-b p-6 bg-white z-50">
+	  <div class="lg:container lg:mx-auto flex items-center justify-between flex-wrap">
 		<div class="flex items-center flex-shrink-0 mr-6">
 		  <a href="/"><img src="/logo.svg" alt="website logo" class="object-contain h-16" aria-label="Go to home"></a>
 		</div>
-		<div class="block xl:hidden">
+		<div class="block lg:hidden">
 		  <button class="menu-btn flex items-center p-4 rounded text-white bg-brand-green hover:bg-brand-green-dark">
 			<Bars3 class="bars h-6" />
 			<XMark class="xmark h-6 hidden"/>
 		  </button>
 		</div>
-		<div class="menu w-full block xl:flex xl:items-center xl:mt-0 xl:w-auto hidden">
-		  <div class="text-sm">
-		  	{navData.map((page) => <a rel="prefetch" class="block xl:inline-block xl:mt-0 hover:text-brand-green-dark font-bold text-gray-800 mr-8" data-navlink href={page.path}>{page.name}</a>)}
+		<div class="menu w-full block lg:flex lg:items-center lg:mt-0 lg:w-auto hidden">
+		  <div class="text-sm border-b lg:border-0 ">
+		  	{navData.map((page) => <a rel="prefetch" class="block lg:inline-block lg:mt-0 bg-white lg:bg-transparent hover:text-brand-green-dark font-bold text-gray-800 lg:mr-8 mb-2 last:mb-4 lg:last:mb-0 lg:mb-0 px-6 rounded py-4 lg:p-0" data-navlink href={page.path}>{page.name}</a>)}
 		  </div>
 		  <div>
 			<a href="https://altagenda.crossuite.com/MOOV/" class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0" target="_blank">Maak een afspraak</a>
@@ -39,10 +39,10 @@ import navData from "../data/navData"
 	menu_button!.addEventListener('click', () => {
 		menu!.classList.toggle("p-6");
 		menu!.classList.toggle("mt-6");
-		menu!.classList.toggle("xl:p-0");
+		menu!.classList.toggle("lg:p-0");
 		menu!.classList.toggle("bg-gray-100");
 		menu!.classList.toggle("rounded");
-		menu!.classList.toggle("xl:bg-white");
+		menu!.classList.toggle("lg:bg-white");
 		menu!.classList.toggle("hidden");
 		bars!.classList.toggle("hidden");
 		xmark!.classList.toggle("hidden");
