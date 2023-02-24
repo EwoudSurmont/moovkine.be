@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image, Picture } from '@astrojs/image/components';
 
 const { title = "Specialisaties" } = Astro.props
 ---
@@ -10,7 +11,7 @@ const { title = "Specialisaties" } = Astro.props
 		<h1 class="font-sans text-4xl font-bold px-8 md:px-16">Specialisaties</h1>
 		
 		<div class="mx-auto px-8 md:px-16 pt-20 md:pt-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center text-left">
-			<img src="/img/specialisaties_manuele.jpg" alt="foto" class="hidden md:block md:object-cover md:h-full">
+			<Image src={"/img/specialisaties_manuele.jpg"} alt="Foto van manuele therapie" format={"webp"} width={640} height={520} class="hidden md:block md:object-cover md:h-full" />
 			<div class="md:py-16">
 				<h2 class="text-3xl font-bold mb-4">Manuele therapie</h2>
 				<p class="text-xl">Bij manuele therapie wordt gebruik gemaakt van verschillende technieken (oa. mobilisaties, manipulaties, tractie, zachte dempende technieken…) om bewegingsstoornissen op te heffen. Hierbij wordt gekeken naar het ganse lichaam. Het gaat hier niet enkel om het behandelen van gewrichtsdysfuncties, maar er wordt ook gekeken naar spieren, ligamenten, zenuwstructuren en bindweefsels.</p>
@@ -26,11 +27,11 @@ const { title = "Specialisaties" } = Astro.props
 				<p class="text-xl pt-4">Deze techniek wordt niet als losstaande therapie gebruikt, maar in combinatie met oa. manuele therapie en oefentherapie.</p>
 				<p class="text-xl pt-4">Meer info: <a class="underline text-brand-green" href="https://www.trigger.be">www.trigger.be</a></p>
 			</div>
-			<img src="/img/specialisaties_myo.jpg" alt="foto" class="hidden md:block md:object-cover md:h-full">
+			<Image src={"/img/specialisaties_myo.jpg"} alt="Foto van dry needling" format={"webp"} width={640} height={520} class="hidden md:block md:object-cover md:h-full" />
 		</div>
 		
 		<div class="mx-auto px-8 md:px-16 pt-20 md:pt-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center text-left">
-			<img src="/img/specialisaties_sport.jpg" alt="foto" class="hidden md:block md:object-cover md:h-full">
+			<Image src={"/img/specialisaties_sport.jpg"} alt="Foto van sportrevalidatie" format={"webp"} width={640} height={520} class="hidden md:block md:object-cover md:h-full" />
 			<div class="md:py-16">
 				<h2 class="text-3xl font-bold mb-4">Sportrevalidatie</h2>
 				<p class="text-xl">Zowel recreatieve als competitieve sporters helpen wij na letsel graag terug naar het niveau van voor het letsel en meer. Aan de hand van screening helpen we u nieuwe letsels of het opnieuw optreden van letsels vermijden. We gaan kijken naar het volledige lichaam om zo zwakke schakels op te sporen en preventief te gaan verstevigen.</p>
@@ -42,7 +43,7 @@ const { title = "Specialisaties" } = Astro.props
 				<h2 class="text-3xl font-bold mb-4">Zwangerschapsbegeleiding</h2>
 				<p class="text-xl">Zwangerschapsbegeleiding bij MOOV bestaat uit een totaalpakket van voorbereiding op de bevalling, verhelpen van klachten tijdens de zwangerschap én herstel na de bevalling. Ik neem graag de tijd om antwoord te geven op al jullie vragen, zodat jullie zorgeloos naar de bevalling toe kunnen leven.</p>
 			</div>
-			<img src="/img/specialisaties_zwanger.jpg" alt="foto" class="hidden md:block md:object-cover md:h-full">
+			<Image src="/img/specialisaties_zwanger.jpg" alt="Foto van zwangerschapsbegeleiding" format={"webp"} width={640} height={520} class="hidden md:block md:object-cover md:h-full" />
 		</div>
 		
 	</div>
