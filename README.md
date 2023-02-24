@@ -1,4 +1,4 @@
 # Website for moovkine.be
-Made with astro
+Made with Astro
 
 Hosted on Netlify
