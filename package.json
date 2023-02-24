@@ -10,11 +10,13 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/image": "^0.15.0",
 		"@astrojs/prefetch": "^0.1.2",
 		"@astrojs/tailwind": "^3.0.1",
 		"@fontsource/dm-sans": "^4.5.9",
-		"astro": "^2.0.8",
+		"astro": "^2.0.13",
 		"astro-heroicons": "^0.3.0",
+		"sharp": "^0.31.3",
 		"simple-parallax-js": "^5.6.2",
 		"tailwindcss": "^3.2.6"
 	}
