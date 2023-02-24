@@ -3,24 +3,85 @@ export interface Props {
 	title: string;
 }
 
+const siteTitle = "Moov Kinesitherapie";
+const description = "MOOV Kine is een jonge praktijk olv. Sanne Surmont gelegen te Kortemark";
 const { title } = Astro.props;
+const pageTitle = siteTitle.concat(" | ", title);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-import '@fontsource/dm-sans';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<title>{pageTitle}</title>
+		<meta name="description" content={description}>
+		
+		<meta property="og:title" content={pageTitle}>
+		<meta property="og:description" content={description}>
+		<meta property="og:image" content="/ogimage.jpg">
+		<meta property="og:locale" content="nl_BE">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content={canonicalURL}>
+		
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="theme-color" content="#005D5F">
+		
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="manifest" href="/site.webmanifest">
+	
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar></Navbar>
 		<slot />
+		<Footer></Footer>	
+		<script is:inline src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		<script is:inline src="/js/parallax.min.js"></script>
 	</body>
 </html>
+
 <style is:global>
 /* Global styles */
+
+*, *::before, *::after {
+box-sizing: border-box;
+}
+
+* {
+margin: 0;
+}
+
+html, body {
+height: 100%;
+}
+
+body {
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+display: block;
+max-width: 100%;
+}
+
+input, button, textarea, select {
+font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+overflow-wrap: break-word;
+}
+
+#root, #__next {
+isolation: isolate;
+}
 </style>

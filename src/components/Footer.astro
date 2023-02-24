@@ -1,0 +1,24 @@
+---
+import navData from "../data/navData"
+---
+<footer>
+  <div class="bg-brand-green mx-auto px-16 py-16 md:grid md:grid-cols-3 md:gap-x-16 md:items-start">
+	<div class="mt-4">
+	  <p class="text-sm text-white font-bold">Praktijk</p>
+	  <p class="text-sm text-white">Lichterveldestraat 145<br>8610 Kortemark</p>
+	  <p class="text-sm text-white font-bold mt-4">Contact</p>
+	  <a class=" block text-sm text-white underline" href="tel:+32475277353">0475 27 73 53</a>
+	  <a href="https://altagenda.crossuite.com/MOOV/" class="block w-max text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4">Maak een afspraak</a>
+	  <p></p>
+	</div>
+	<a class="self-center hidden md:block" href="/"><img src="../img/trigger.png" alt="logo trigger" class="object-contain h-24 w-full"></a>
+	<nav class="hidden md:block">
+	  <div class="text-sm block text-right">
+		  {navData.map((page) => <a rel="prefetch" class="block mt-4 text-white font-bold hover:underline" data-navlink href={page.path}>{page.name}</a>)}
+	  </div>
+	</nav>
+  </div>
+  <div class="mx-auto py-4 text-center text-xs">
+	<p>Made with <span class="font-emoji">&#10084;</span> by <a class="underline" href="https://ewoudsurmont.be">ewoudsurmont.be</a></p>
+  </div>
+</footer>

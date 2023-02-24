@@ -8,5 +8,6 @@ import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), prefetch()]
+  integrations: [tailwind(), prefetch()],
+  site: 'https://www.moovkine.be'
 });

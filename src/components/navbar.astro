@@ -1,23 +1,24 @@
 ---
 import Bars3 from "astro-heroicons/solid/Bars3.astro";
 import XMark from "astro-heroicons/solid/XMark.astro";
+import navData from "../data/navData"
 ---
 
 <header>
 	<nav class="border-b p-6 bg-white">
 	  <div class="xl:container xl:mx-auto flex items-center justify-between flex-wrap">
 		<div class="flex items-center flex-shrink-0 mr-6">
-		  <a href="/"><img src="/logo.svg" alt="logo" class="object-contain h-16"></a>
+		  <a href="/"><img src="/logo.svg" alt="website logo" class="object-contain h-16" aria-label="Go to home"></a>
 		</div>
 		<div class="block xl:hidden">
-		  <button class="menu-btn flex items-center p-4 rounded text-white bg-sky-600 hover:bg-sky-700">
+		  <button class="menu-btn flex items-center p-4 rounded text-white bg-brand-green hover:bg-brand-green-dark">
 			<Bars3 class="bars h-6" />
 			<XMark class="xmark h-6 hidden"/>
 		  </button>
 		</div>
 		<div class="menu w-full block xl:flex xl:items-center xl:mt-0 xl:w-auto hidden">
-		  <div class="text-xs tracking-wider">
-			<a rel="prefetch" href="/index" class="block xl:inline-block xl:mt-0 hover:text-sky-900 font-normal uppercase text-gray-800 mr-8 ">Home</a>
+		  <div class="text-sm">
+		  	{navData.map((page) => <a rel="prefetch" class="block xl:inline-block xl:mt-0 hover:text-brand-green-dark font-bold text-gray-800 mr-8" data-navlink href={page.path}>{page.name}</a>)}
 		  </div>
 		  <div>
 			<a href="https://altagenda.crossuite.com/MOOV/" class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0" target="_blank">Maak een afspraak</a>
@@ -28,22 +29,31 @@ import XMark from "astro-heroicons/solid/XMark.astro";
   </header>
 
   <script>
-
+  
 	const menu_button = document.querySelector('.menu-btn');
 	const menu = document.querySelector('.menu');
 	const bars = document.querySelector('.bars');
 	const xmark = document.querySelector('.xmark');
+	const navLinks = document.querySelectorAll('[data-navlink]');
 	
 	menu_button!.addEventListener('click', () => {
-		console.log("menu")
 		menu!.classList.toggle("p-6");
 		menu!.classList.toggle("mt-6");
 		menu!.classList.toggle("xl:p-0");
 		menu!.classList.toggle("bg-gray-100");
+		menu!.classList.toggle("rounded");
 		menu!.classList.toggle("xl:bg-white");
 		menu!.classList.toggle("hidden");
 		bars!.classList.toggle("hidden");
 		xmark!.classList.toggle("hidden");
+	});
+	
+	navLinks.forEach((link) => {
+		if (link.getAttribute("href") === window.location.pathname){
+			link.classList.add("text-brand-green-dark");
+			link.classList.remove("text-gray-800");
+			
+		};
 	});
 
   </script>

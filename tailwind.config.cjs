@@ -7,8 +7,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
-				'emoji': ["Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"]
+				'emoji': ["Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
 			},
 			colors: {
 				'brand-green': '#005D5F',
