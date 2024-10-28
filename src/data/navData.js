@@ -4,8 +4,8 @@ const navData = [
 		path: "/",
 	},
 	{
-		name: "Over Mij", 
-		path: "/over-mij/",
+		name: "Team", 
+		path: "/team/",
 	},
 	{
 		name: "Specialisaties", 
