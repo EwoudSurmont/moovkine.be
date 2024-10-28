@@ -1,6 +1,6 @@
 ---
 import navData from "../data/navData"
-import { Image, Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 ---
 <footer>
   <div class="bg-brand-green mx-auto px-16 py-16 md:grid md:grid-cols-3 md:gap-x-16 md:items-start">
@@ -12,7 +12,7 @@ import { Image, Picture } from '@astrojs/image/components';
 	  <a href="https://altagenda.crossuite.com/MOOV/" class="block w-max text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4" data-goatcounter-click="altagenda.crossuite.com/MOOV/" data-goatcounter-title="Appointment">Maak een afspraak</a>
 	  <p></p>
 	</div>
-	<a class="self-center hidden md:block" href="/"><Image src={"/img/trigger.png"} alt="logo trigger" format={"webp"} width={128} height={128} class="object-contain h-24 w-full" /></a>
+	<a class="self-center hidden md:block" href="/"><Image src="/img/trigger.png" alt="logo trigger" width="128" height="128" class="object-contain h-24 w-full" /></a>
 	<nav class="hidden md:block">
 	  <div class="text-sm block text-right">
 		  {navData.map((page) => <a rel="prefetch" class="block mt-4 text-white font-bold hover:underline" data-navlink href={page.path}>{page.name}</a>)}

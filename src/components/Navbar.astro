@@ -16,7 +16,7 @@ import navData from "../data/navData"
 			<XMark class="xmark h-6 hidden"/>
 		  </button>
 		</div>
-		<div class="menu w-full block lg:flex lg:items-center lg:mt-0 lg:w-auto hidden">
+		<div class="menu w-full lg:flex lg:items-center lg:mt-0 lg:w-auto hidden">
 		  <div class="text-sm border-b lg:border-0 ">
 		  	{navData.map((page) => <a rel="prefetch" class="block lg:inline-block lg:mt-0 bg-white lg:bg-transparent hover:text-brand-green-dark font-bold text-gray-800 lg:mr-8 mb-2 last:mb-4 lg:last:mb-0 lg:mb-0 px-6 rounded py-4 lg:p-0" data-navlink href={page.path}>{page.name}</a>)}
 		  </div>

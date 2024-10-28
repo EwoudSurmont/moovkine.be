@@ -10,14 +10,17 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.15.0",
-		"@astrojs/prefetch": "^0.1.2",
-		"@astrojs/tailwind": "^3.0.1",
+		"@astrojs/prefetch": "^0.4.1",
+		"@astrojs/tailwind": "^5.1.2",
 		"@fontsource/dm-sans": "^4.5.9",
-		"astro": "^2.0.13",
+		"astro": "^4.16.7",
 		"astro-heroicons": "^0.3.0",
-		"sharp": "^0.31.3",
+		"sharp": "^0.33.5",
 		"simple-parallax-js": "^5.6.2",
 		"tailwindcss": "^3.2.6"
+	},
+	"devDependencies": {
+		"prettier": "^3.3.3",
+		"prettier-plugin-astro": "^0.14.1"
 	}
 }
