@@ -1,56 +1,88 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import LinkButton from "../components/LinkButton.astro";
 
-const { title = "Home" } = Astro.props
+const { title = "Home" } = Astro.props;
 ---
 
 <Layout title={title}>
-	<div class="pb-48">
-		<div class="mx-auto px-8 md:px-16 py-20 md:py-40 text-center">
-			<h1 class="font-sans text-4xl font-bold mb-4">Welkom bij <span class="text-brand-green">MOOV Kine</span>.</h1>
-			<h2 class="text-xl">MOOV Kine is een jonge en dynamische groepspraktijk gelegen te <span class="font-bold">Kortemark</span>.</h2>
-			</div>
-	</div>
-	
-	<div class="bg-brand-green flow-root">
-		<div class="wrapper h-96 md:mx-16 -mt-48">
-			<Image src="/img/home_intro.jpg" alt="foto van een behandeling" width="1312" height="527" class="introphoto h-96 w-full object-cover object-center" />
-		</div>
-		<div class="max-w-screen-lg mx-auto px-8 md:px-16 py-20 md:py-40 text-center ">
-			<h1 class="text-4xl font-bold mb-4 text-white">To move/Bewegen</h1>
-			<p class="text-xl text-white">To move/Bewegen en terug in beweging komen is van groot belang tijdens elke revalidatie. Bewegen staat dan ook centraal in de meeste van mijn behandelingen. Voor een optimaal resultaat van de behandeling vraag ik ook een actieve medewerking van de patiënt. MOOV staat garant voor een persoonlijke en doelgerichte aanpak voor elke specifieke lichamelijke klacht. </p>
-		</div>
-	</div>
-	
-	<div class="mx-auto px-8 md:px-16 py-20 md:py-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center">
-		<Image src="/img/home_behandelingen.jpg" alt="foto van een behandeling" width="640" height="520" class="hidden md:block md:object-cover md:h-full"/>
-		<div class="md:py-16">
-			<h1 class="text-4xl font-bold mb-4">Behandelingen</h1>
-			<p class="text-xl">Voor volgende behandelingen kunt u bij MOOV terecht:</p>
-			<ul class="list-disc list-inside text-xl py-4 pb-8">
-				<li>Sportrevalidatie</li>
-				<li>Manuele therapie</li>
-				<li>Myofasciale therapie (Dry Needling)</li>
-				<li>Zwangerschapsbegeleiding (pre-/postnataal)</li>
-				<li>Algemene revalidatie</li>
-			</ul>
-			<p class="text-xl pb-4" >Een behandeling bij MOOV kan enkel op afspraak</p>
-			<a href="https://altagenda.crossuite.com/MOOV/" class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0" target="_blank">Maak een afspraak</a>
-		</div>
-	</div>
+  <div class="pb-48">
+    <div class="mx-auto px-8 md:px-16 py-20 md:py-40 text-center">
+      <h1 class="font-sans text-4xl font-bold mb-4">
+        Welkom bij <span class="text-brand-green">MOOV Kine</span>.
+      </h1>
+      <h2 class="text-xl">
+        MOOV Kine is een jonge en dynamische groepspraktijk gelegen te <span
+          class="font-bold">Kortemark</span
+        >.
+      </h2>
+    </div>
+  </div>
+
+  <div class="bg-brand-green flow-root">
+    <div class="wrapper h-96 md:mx-16 -mt-48">
+      <Image
+        src="/img/home_intro.jpg"
+        alt="foto van een behandeling"
+        width="1312"
+        height="527"
+        class="introphoto h-96 w-full object-cover object-center"
+      />
+    </div>
+    <div
+      class="max-w-screen-lg mx-auto px-8 md:px-16 py-20 md:py-40 text-center"
+    >
+      <h1 class="text-4xl font-bold mb-4 text-white">To move/Bewegen</h1>
+      <p class="text-xl text-white">
+        To move/Bewegen en terug in beweging komen is van groot belang tijdens
+        elke revalidatie. Bewegen staat dan ook centraal in de meeste van mijn
+        behandelingen. Voor een optimaal resultaat van de behandeling vraag ik
+        ook een actieve medewerking van de patiënt. MOOV staat garant voor een
+        persoonlijke en doelgerichte aanpak voor elke specifieke lichamelijke
+        klacht.
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="mx-auto px-8 md:px-16 py-20 md:py-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center"
+  >
+    <Image
+      src="/img/home_behandelingen.jpg"
+      alt="foto van een behandeling"
+      width="640"
+      height="520"
+      class="hidden md:block md:object-cover md:h-full"
+    />
+    <div class="md:py-16 flex flex-col gap-4 items-start">
+      <h1 class="text-4xl font-bold">Behandelingen</h1>
+      <p class="text-xl">
+        Voor volgende behandelingen kunt u bij MOOV terecht:
+      </p>
+      <ul class="list-disc list-inside text-xl">
+        <li>Sportrevalidatie</li>
+        <li>Manuele therapie</li>
+        <li>Myofasciale therapie (Dry Needling)</li>
+        <li>Zwangerschapsbegeleiding (pre-/postnataal)</li>
+        <li>Algemene revalidatie</li>
+      </ul>
+      <p class="text-xl">Een behandeling bij MOOV kan enkel op afspraak</p>
+      <LinkButton
+        url="https://altagenda.crossuite.com/MOOV/"
+        label="Maak een afspraak"
+        target="_blank"
+      />
+    </div>
+  </div>
 </Layout>
 
-<style>
-/* Styles */
-</style>
-
 <script>
-	import simpleParallax from 'simple-parallax-js';
-	
-	const image = document.getElementsByClassName('introphoto');
-	new simpleParallax(image, {
-		scale: 1.2,
-		customWrapper: '.wrapper',
-	});
+  import simpleParallax from "simple-parallax-js";
+
+  const image = document.getElementsByClassName("introphoto");
+  new simpleParallax(image, {
+    scale: 1.2,
+    customWrapper: ".wrapper",
+  });
 </script>
