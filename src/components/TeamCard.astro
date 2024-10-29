@@ -4,8 +4,44 @@ import teamData from "../data/teamData";
 import mainCourseData from "../data/mainCourseData";
 import LinkButton from "./LinkButton.astro";
 
+import { supabase } from "../lib/supabase";
+
 const { firstName } = Astro.props;
+
+
+let { data: Members, error:membersError } = await supabase
+  .from('Members')
+  .select('*, specs:Specialisations!inner(*), courses:Courses!inner(*)')
+  .eq('firstName', `${firstName}`)
+  .maybeSingle()
+
+// let {data: Courses, error:coursesError} = await supabase
+// .from('Courses')
+// .select('*, members:Members!inner(*)')
+// .eq('members.firstName', `${firstName}`)
+          
+if (membersError) {
+  console.error(membersError);
+  throw membersError;
+}
+
+// if (coursesError) {
+//   console.error(coursesError);
+//   throw coursesError;
+// }
+
+console.log(Members);
+// console.log(Courses);
 ---
+
+
+    <ul class="list-disc list-inside">{Members?.specs.map((specs)=>(
+      <li>{specs.name}</li>
+    ))}</ul>
+    <ul class="list-disc list-inside">{Members?.courses.filter(course => course.favorite).map((course)=>(
+      <li>{course.name}</li>
+    ))}</ul>
+
 
 {
   teamData
