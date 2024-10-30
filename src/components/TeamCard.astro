@@ -5,6 +5,7 @@ import mainCourseData from "../data/mainCourseData";
 import LinkButton from "./LinkButton.astro";
 
 const { firstName } = Astro.props;
+const categories = [...new Set(mainCourseData.flatMap(data => data.category))]
 ---
 
 {
@@ -65,30 +66,44 @@ const { firstName } = Astro.props;
       </button>
     </div>
     <div class="overflow-y-auto" style={{ maxHeight: "80vh" }}>
-      <div class="text-left px-4">
-        <ul
-          class="text-base py-4 grid sm:grid-cols-1 lg:grid-cols-2 gap-y-4 md:gap-x-4 md:items-stretch"
-        >
-          {
-            mainCourseData
-              .filter((course) => course.owner?.includes(`${firstName}`))
-              .sort((a, b) => a.year - b.year)
-              .map((course) => (
-                <li class="block p-4 border border-slate-200 bg-slate-50 rounded">
-                  <span class="block pb-2 font-medium">{course.title}</span>
-                  <span class="block text-sm text-slate-500">
-                    ({course.year}, {course.school})
-                  </span>
-                </li>
-              ))
-          }
-        </ul>
+      <div class="text-left p-4 flex flex-col gap-8 hidecontainer">
+        {
+          categories.map((category) => (
+          <div class="flex flex-col gap-2">
+            <h3 class="text-xl font-bold">{category}</h3>
+            <ul
+              class="text-base grid sm:grid-cols-1 lg:grid-cols-2 gap-y-4 md:gap-x-4 md:items-stretch results"
+            >
+              {
+                mainCourseData
+                  .filter((course) => course.owner?.includes(`${firstName}`))
+                  .filter((course) => course.category.includes(category))
+                  .map((course) => (
+                    <li class="block p-4 border border-slate-200 bg-slate-50 rounded">
+                      <span class="block pb-2 font-medium">{course.title}</span>
+                      <span class="block text-sm text-slate-500">
+                        ({course.year}, {course.school})
+                      </span>
+                    </li>
+                  ))
+              }
+            </ul>
+          </div>
+
+          ))
+        }
       </div>
     </div>
   </dialog>
       </div>
     ))
 }
+
+<style>
+  .hidecontainer:has(.results:empty) {
+    display: none;
+  }
+</style>
   
 
 <script define:vars={{firstName}}>
