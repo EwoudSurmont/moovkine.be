@@ -8,7 +8,7 @@ const mainCourseData = [
   },
   {
     title: "Refresher Course Mid- en Laagcervicale manipulatietechnieken",
-    year: "2015 &amp; 2018",
+    year: "2015 & 2018",
     school: "UGent",
     owner: "Sanne",
     category: "Manuele Therapie",
