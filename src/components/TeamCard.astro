@@ -4,52 +4,107 @@ import teamData from "../data/teamData";
 import mainCourseData from "../data/mainCourseData";
 import LinkButton from "./LinkButton.astro";
 
+interface Props {
+  firstName: string;
+}
+
 const { firstName } = Astro.props;
-const categories = [...new Set(mainCourseData.flatMap(data => data.category))]
+
+// Move data processing to component initialization
+const member = teamData.find((m) => m.firstName?.includes(firstName));
+if (!member) throw new Error(`Team member ${firstName} not found`);
+
+// Pre-process categories and courses once
+const memberCourses = mainCourseData.filter((course) =>
+  course.owner?.includes(firstName)
+);
+const categories = [...new Set(memberCourses.map((course) => course.category))];
+
+// Create a map of courses by category for efficient lookup
+const coursesByCategory = categories.reduce(
+  (acc, category) => {
+    acc[category] = memberCourses.filter((course) =>
+      course.category.includes(category)
+    );
+    return acc;
+  },
+  {} as Record<string, typeof mainCourseData>
+);
 ---
 
-{
-  teamData
-    .filter((member) => member.firstName?.includes(firstName))
-    .map((member) => (
-      <div class="p-12 flex flex-col gap-4 items-start text-left text-xl border border-slate-200 bg-slate-50 rounded">
-        <div class="flex flex-row items-center gap-4">
-          <Image
-            src={member.img}
-            alt=`Profielfoto ${member.firstName}`
-            width="64"
-            height="64"
-            class="rounded-full border border-slate-200 grayscale"
-          />
-          <h2 class="text-3xl font-bold">{member.firstName}&nbsp;{member.lastName}</h2>
-        </div>
-        <div class="flex flex-col gap-0">
-        {member.courses.map((course) => (
-            <p>{course}</p>
-        ))}
-        </div>
-        <div class="flex flex-col gap-0">
-            <p class="font-bold">Specialisaties:</p>
-            <ul class="list-disc list-inside">
-                {member.specialisations.map((specialisation) => (
-                    <li>{specialisation}</li>
-                ))}
-            </ul> 
-        </div>
-        <p>
-            Een detail van de gevolgde cursussen van {member.firstName}, <button
-            id=`show${firstName}Dialog`
-            class="underline text-brand-green hover:text-brand-green-dark"
-            >is hier te vinden</button>.
-        </p>
-        <LinkButton url={member.appointmentURL} label=`Maak een afspraak bij ${member.firstName}` target="_blank"></LinkButton>
+<div
+  class="p-12 flex flex-col gap-4 items-start text-left text-xl border border-slate-200 bg-slate-50 rounded"
+>
+  <!-- Profile Header -->
+  <div class="flex flex-row items-center gap-4">
+    <Image
+      src={member.img}
+      alt={`Profielfoto ${member.firstName}`}
+      width={64}
+      height={64}
+      class="rounded-full border border-slate-200 grayscale"
+    />
+    <h2 class="text-3xl font-bold">
+      {member.firstName}&nbsp;{member.lastName}
+    </h2>
+  </div>
 
-        <dialog id=`${firstName}Dialog` class="max-w-screen-md mx-auto rounded m-8 p-0">
+  <!-- Courses List -->
+  {
+    member.courses.length > 0 && (
+      <div class="flex flex-col gap-0">
+        {member.courses.map((course) => (
+          <p>{course}</p>
+        ))}
+      </div>
+    )
+  }
+
+  <!-- Specializations -->
+  {
+    member.specialisations.length > 0 && (
+      <div class="flex flex-col gap-0">
+        <p class="font-bold">Specialisaties:</p>
+        <ul class="list-disc list-inside">
+          {member.specialisations.map((specialisation) => (
+            <li>{specialisation}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <!-- Dialog Trigger -->
+  <p>
+    Een detail van de gevolgde cursussen van {member.firstName},
+    <button
+      id={`show${firstName}Dialog`}
+      class="underline text-brand-green hover:text-brand-green-dark"
+    >
+      is hier te vinden
+    </button>
+  </p>
+
+  <LinkButton
+    url={member.appointmentURL}
+    label={`Maak een afspraak bij ${member.firstName}`}
+    target="_blank"
+  />
+
+  <!-- Course Details Dialog -->
+  <dialog
+    id={`${firstName}Dialog`}
+    class="max-w-screen-md mx-auto rounded m-8 p-0"
+  >
     <div
       class="p-4 bg-white border-b border-slate-100 flex flex-row items-center"
     >
       <h3 class="font-bold grow">Opleidingen</h3>
-      <button class="w-6 h-6" id=`close${firstName}Dialog`>
+      <button
+        class="w-6 h-6"
+        id={`close${firstName}Dialog`}
+        aria-label="Close dialog"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -65,59 +120,67 @@ const categories = [...new Set(mainCourseData.flatMap(data => data.category))]
         </svg>
       </button>
     </div>
-    <div class="overflow-y-auto" style={{ maxHeight: "80vh" }}>
-      <div class="text-left p-4 flex flex-col gap-8 hidecontainer">
-        {
-          categories.map((category) => (
-          <div class="flex flex-col gap-2">
-            <h3 class="text-xl font-bold">{category}</h3>
-            <ul
-              class="text-base grid sm:grid-cols-1 lg:grid-cols-2 gap-y-4 md:gap-x-4 md:items-stretch results"
-            >
-              {
-                mainCourseData
-                  .filter((course) => course.owner?.includes(`${firstName}`))
-                  .filter((course) => course.category.includes(category))
-                  .map((course) => (
-                    <li class="block p-4 border border-slate-200 bg-slate-50 rounded">
-                      <span class="block pb-2 font-medium">{course.title}</span>
-                      <span class="block text-sm text-slate-500">
-                        ({course.year}, {course.school})
-                      </span>
-                    </li>
-                  ))
-              }
-            </ul>
-          </div>
 
-          ))
+    <div class="overflow-y-auto max-h-[80vh]">
+      <div class="text-left p-4 flex flex-col gap-8">
+        {
+          categories.map((category) => {
+            const categoryCourses = coursesByCategory[category];
+            return (
+              categoryCourses.length > 0 && (
+                <div class="flex flex-col gap-2">
+                  <h3 class="text-xl font-bold">{category}</h3>
+                  <ul class="text-base grid sm:grid-cols-1 lg:grid-cols-2 gap-y-4 md:gap-x-4 md:items-stretch">
+                    {categoryCourses.map((course) => (
+                      <li class="block p-4 border border-slate-200 bg-slate-50 rounded">
+                        <span class="block pb-2 font-medium">
+                          {course.title}
+                        </span>
+                        <span class="block text-sm text-slate-500">
+                          ({course.year}, {course.school})
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            );
+          })
         }
       </div>
     </div>
   </dialog>
-      </div>
-    ))
-}
+</div>
 
-<style>
-  .hidecontainer:has(.results:empty) {
-    display: none;
+<script define:vars={{ firstName }}>
+  {
+    // Initialize dialog functionality
+    const dialogInit = () => {
+      const dialog = document.getElementById(`${firstName}Dialog`);
+      const showButton = document.getElementById(`show${firstName}Dialog`);
+      const closeButton = document.getElementById(`close${firstName}Dialog`);
+
+      if (!dialog || !showButton || !closeButton) return;
+
+      const handleShow = () => dialog.showModal();
+      const handleClose = () => dialog.close();
+
+      showButton.addEventListener("click", handleShow);
+      closeButton.addEventListener("click", handleClose);
+
+      // Add keyboard handling for accessibility
+      dialog.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") handleClose();
+      });
+
+      // Clean up event listeners
+      return () => {
+        showButton.removeEventListener("click", handleShow);
+        closeButton.removeEventListener("click", handleClose);
+      };
+    };
+
+    // Initialize when the DOM is ready
+    document.addEventListener("DOMContentLoaded", dialogInit);
   }
-</style>
-  
-
-<script define:vars={{firstName}}>
-  const showButton = document.getElementById(`show${firstName}Dialog`);
-  const closeButton = document.getElementById(`close${firstName}Dialog`);
-  const dialog = document.getElementById(
-    `${firstName}Dialog`
-  );
-
-  showButton?.addEventListener("click", () => {
-    dialog?.showModal();
-  });
-
-  closeButton?.addEventListener("click", () => {
-    dialog?.close();
-  });
 </script>

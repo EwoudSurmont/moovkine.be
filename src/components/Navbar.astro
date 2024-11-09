@@ -10,33 +10,41 @@ import navData from "../data/navData";
       class="lg:container lg:mx-auto flex items-center justify-between flex-wrap"
     >
       <div class="flex items-center flex-shrink-0 mr-6">
-        <a href="/"
-          ><img
+        <a href="/" aria-label="Go to home">
+          <img
             src="/logo.svg"
-            alt="website logo"
+            alt="Website logo"
             class="object-contain h-16"
-            aria-label="Go to home"
-          /></a
-        >
+            width="64"
+            height="64"
+          />
+        </a>
       </div>
+
       <div class="block lg:hidden">
         <button
-          aria-label="Menu"
+          aria-label="Toggle menu"
+          aria-expanded="false"
           class="menu-btn flex items-center p-4 rounded text-white bg-brand-green hover:bg-brand-green-dark"
         >
           <Bars3 class="bars h-6" />
           <XMark class="xmark h-6 hidden" />
         </button>
       </div>
-      <div class="menu w-full lg:flex lg:items-center lg:mt-0 lg:w-auto hidden">
+
+      <div
+        class="menu w-full lg:flex lg:items-center lg:mt-0 lg:w-auto hidden"
+        role="menubar"
+      >
         <div class="text-sm border-b lg:border-0">
           {
             navData.map((page) => (
               <a
                 rel="prefetch"
-                class="block lg:inline-block lg:mt-0 bg-white lg:bg-transparent hover:text-brand-green-dark font-bold text-gray-800 lg:mr-8 mb-2 last:mb-4 lg:last:mb-0 lg:mb-0 px-6 rounded py-4 lg:p-0"
+                class="block lg:inline-block lg:mt-0 bg-white lg:bg-transparent hover:text-brand-green-dark font-bold text-gray-800 lg:mr-8 mb-2 last:mb-4 lg:last:mb-0 lg:mb-0 px-6 rounded py-4 lg:p-0 navigation-link"
                 data-navlink
                 href={page.path}
+                role="menuitem"
               >
                 {page.name}
               </a>
@@ -48,9 +56,12 @@ import navData from "../data/navData";
             href="https://altagenda.crossuite.com/MOOV/"
             class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0"
             target="_blank"
+            rel="noopener noreferrer"
             data-goatcounter-click="altagenda.crossuite.com/MOOV/"
-            data-goatcounter-title="Appointment">Maak een afspraak</a
+            data-goatcounter-title="Appointment"
           >
+            Maak een afspraak
+          </a>
         </div>
       </div>
     </div>
@@ -58,28 +69,52 @@ import navData from "../data/navData";
 </header>
 
 <script>
-  const menu_button = document.querySelector(".menu-btn");
-  const menu = document.querySelector(".menu");
-  const bars = document.querySelector(".bars");
-  const xmark = document.querySelector(".xmark");
-  const navLinks = document.querySelectorAll("[data-navlink]");
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.querySelector(".menu-btn");
+    const menu = document.querySelector(".menu");
+    const bars = document.querySelector(".bars");
+    const xmark = document.querySelector(".xmark");
+    const navLinks = document.querySelectorAll("[data-navlink]");
 
-  menu_button!.addEventListener("click", () => {
-    menu!.classList.toggle("p-6");
-    menu!.classList.toggle("mt-6");
-    menu!.classList.toggle("lg:p-0");
-    menu!.classList.toggle("bg-gray-100");
-    menu!.classList.toggle("rounded");
-    menu!.classList.toggle("lg:bg-white");
-    menu!.classList.toggle("hidden");
-    bars!.classList.toggle("hidden");
-    xmark!.classList.toggle("hidden");
-  });
+    if (menuButton && menu && bars && xmark) {
+      menuButton.addEventListener("click", () => {
+        const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", (!isExpanded).toString());
 
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href") === window.location.pathname) {
-      link.classList.add("text-brand-green-dark");
-      link.classList.remove("text-gray-800");
+        const toggleClasses = [
+          "p-6",
+          "mt-6",
+          "lg:p-0",
+          "bg-gray-100",
+          "rounded",
+          "lg:bg-white",
+          "hidden",
+        ];
+
+        toggleClasses.forEach((cls) => {
+          menu.classList.toggle(cls);
+        });
+
+        bars.classList.toggle("hidden");
+        xmark.classList.toggle("hidden");
+      });
     }
+
+    // Current page highlighting
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href === window.location.pathname) {
+        link.classList.replace("text-gray-800", "text-brand-green-dark");
+        link.setAttribute("aria-current", "page");
+      }
+    });
   });
 </script>
+
+<style>
+  /* Hover and focus states */
+  .navigation-link:hover,
+  .navigation-link:focus {
+    @apply text-brand-green-dark;
+  }
+</style>

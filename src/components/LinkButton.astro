@@ -1,11 +1,46 @@
 ---
-const { url, label, target } = Astro.props;
+interface Props {
+  url: string;
+  label: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  variant?: "primary" | "secondary" | "outline";
+  analytics?: {
+    click?: string;
+    title?: string;
+  };
+  className?: string;
+}
+
+const {
+  url,
+  label,
+  target = "_self",
+  variant = "primary",
+  analytics = {},
+  className = "",
+} = Astro.props;
+
+// Variant-based classes
+const variantClasses = {
+  primary: "text-white bg-brand-green hover:bg-brand-green-dark",
+  secondary:
+    "text-brand-green bg-white border-brand-green hover:bg-brand-green-50",
+  outline: "text-brand-green border-brand-green hover:bg-brand-green-50",
+};
+
+const baseClasses =
+  "inline-block text-sm font-bold px-6 py-4 leading-none border rounded mt-4 lg:mt-0 transition-colors duration-200";
+const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
 ---
 
 <a
   href={url}
   target={target}
-  class="text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0"
-  data-goatcounter-click="altagenda.crossuite.com/MOOV/"
-  data-goatcounter-title="Appointment">{label}</a
+  class={combinedClasses}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  data-goatcounter-click={analytics.click}
+  data-goatcounter-title={analytics.title}
+  aria-label={`Navigate to ${label}`}
 >
+  {label}
+</a>
