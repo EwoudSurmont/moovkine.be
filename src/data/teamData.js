@@ -14,7 +14,8 @@ const teamData = [
       "Zwangerschapsbegeleiding (pre-/postnataal)",
       "Kinecoach Obesitas ©",
     ],
-    appointmentURL: "https://altagenda.crossuite.com/MOOV/",
+    appointmentURL:
+      "https://bookings.crossuite.app/b522025b-0eea-409a-8b54-35a1693aa252",
   },
   {
     firstName: "Jara",
@@ -24,7 +25,8 @@ const teamData = [
       "Master in de Revalidatiewetenschappen en kinesitherapie (UGent)",
     ],
     specialisations: ["Sport en revalidatie"],
-    appointmentURL: "https://altagenda.crossuite.com/MOOV/",
+    appointmentURL:
+      "https://bookings.crossuite.app/b7c13b4c-1432-4158-b573-aefedf864609",
   },
 ];
 
