@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+---
+
+<Layout
+  title="Psychotherapie"
+  description="Ontdek onze psychotherapie/gesprekstherapie in kader van: depressie, stress en burn-out, angst- en paniekklachten, verlies en rouw, trauma, zelfvertrouwen, relationele moeilijkheden, piekeren, levensvragen, innerlijke onrust en persoonlijke groei in Kortemark."
+  keywords={[
+	"psychotherapie",
+	"gesprekstherapie",
+    "depressie",
+	"stress en burn-out",
+	"angst- en paniekklachten",
+	"verlies en rouw",
+	"trauma",
+	"zelfvertrouwen",
+	"relationele moeilijkheden",
+	"piekeren",
+	"levensvragen",
+	"innerlijke onrust",
+	"persoonlijke groei",
+  ]}
+>
+	<div class="mx-auto py-20 md:py-40 text-center">
+		
+		<h1 class="font-sans text-4xl font-bold px-8 md:px-16">Psychotherapie</h1>
+		
+		<div class="mx-auto px-8 md:px-16 pt-20 md:pt-40 md:grid md:grid-cols-2 md:gap-x-16 md:items-center text-left">
+			<Image src="/img/specialisaties_manuele.jpg" alt="Foto van manuele therapie" width="640" height="520" class="hidden md:block md:object-cover md:h-full" />
+			<div class="md:py-16">
+				<p class="text-xl">Bij MOOV kan je terecht voor psychotherapie/gesprekstherapie in kader van volgende problematieken:</p>
+				<ul class="list-disc list-inside text-xl pt-4">
+					<li>Depressie</li>
+					<li>Stress en burn-out</li>
+					<li>Angst- en paniekklachten</li>
+					<li>Verlies en rouw</li>
+					<li>Trauma</li>
+					<li>Zelfvertrouwen</li>
+					<li>Relationele moeilijkheden</li>
+					<li>Piekeren</li>
+					<li>Levensvragen</li>
+					<li>Innerlijke onrust</li>
+					<li>Persoonlijke groei</li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+</Layout>

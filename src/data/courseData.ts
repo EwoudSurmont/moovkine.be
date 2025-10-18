@@ -1,6 +1,6 @@
 import type { Course } from "../types/course";
 
-const mainCourseData: Course[] = [
+const courseData: Course[] = [
   {
     title: "Postgraduaat Manuele therapie",
     year: "2014",
@@ -379,6 +379,41 @@ const mainCourseData: Course[] = [
     owner: "Jara",
     category: "Varia",
   },
+  {
+    title: "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
+    year: "",
+    school: "",
+    owner: "Tracey",
+    category: "Psychotherapie",
+  },
+  {
+    title: "Wellnessconsulente (Health & Coaching)",
+    year: "",
+    school: "",
+    owner: "Tracey",
+    category: "Psychotherapie",
+  },
+  {
+    title: "Mindfulness",
+    year: "",
+    school: "",
+    owner: "Tracey",
+    category: "Psychotherapie",
+  },
+  {
+    title: "ACT-therapie",
+    year: "",
+    school: "",
+    owner: "Tracey",
+    category: "Psychotherapie",
+  },
+  {
+    title: "Integratieve traumatherapie (in opleiding)",
+    year: "",
+    school: "",
+    owner: "Tracey",
+    category: "Psychotherapie",
+  },
 ];
 
-export default mainCourseData;
+export default courseData;

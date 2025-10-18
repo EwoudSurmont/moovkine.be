@@ -10,8 +10,12 @@ const navData: NavItem[] = [
     path: "/team/",
   },
   {
-    name: "Specialisaties",
-    path: "/specialisaties/",
+    name: "Kinesitherapie",
+    path: "/kinesitherapie/",
+  },
+  {
+    name: "Psychotherapie",
+    path: "/psychotherapie/",
   },
   {
     name: "Praktische info",
