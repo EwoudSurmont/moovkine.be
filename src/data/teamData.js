@@ -28,6 +28,17 @@ const teamData = [
     appointmentURL:
       "https://bookings.crossuite.app/b7c13b4c-1432-4158-b573-aefedf864609",
   },
+  {
+    firstName: "Tracey",
+    lastName: "Cuylle",
+    img: "/img/profo-tracey.jpg",
+    courses: [
+      "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
+    ],
+    specialisations: ["Psychotherapie"],
+    appointmentURL:
+      "#",
+  },
 ];
 
 export default teamData;
