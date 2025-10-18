@@ -2,11 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import LinkButton from "../components/LinkButton.astro";
-
-const { title = "Home" } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout
+  title="Home"
+  description="MOOV is een jonge en dynamische multidisciplinaire groepspraktijk voor kinesitherapie en psychotherapie in Kortemark. Gespecialiseerd in manuele therapie, sportrevalidatie, zwangerschapsbegeleiding en dry needling."
+  keywords={[
+    "kinesitherapie Kortemark",
+    "kine Kortemark",
+    "manuele therapie",
+    "sportrevalidatie",
+    "zwangerschapsbegeleiding",
+    "dry needling",
+    "psychotherapie",
+    "West-Vlaanderen",
+  ]}
+>
   <div class="pb-48">
     <div class="mx-auto px-8 md:px-16 py-20 md:py-40 text-center">
       <h1 class="font-sans text-4xl font-bold mb-4">
@@ -54,6 +65,7 @@ const { title = "Home" } = Astro.props;
       width="640"
       height="520"
       class="hidden md:block md:object-cover md:h-full"
+      loading="lazy"
     />
     <div class="md:py-16 flex flex-col gap-4 items-start">
       <h1 class="text-4xl font-bold">Behandelingen</h1>

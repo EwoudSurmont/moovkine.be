@@ -1,38 +1,45 @@
 ---
 import { Image } from "astro:assets";
-import mainCourseData from "../data/mainCourseData";
+import courseData from "../data/courseData";
 import LinkButton from "./LinkButton.astro";
+import type { TeamMember } from "../types/team";
 
 interface Props {
-  member: {
-    firstName: string;
-    lastName: string;
-    img: string;
-    courses: string[];
-    specialisations: string[];
-    appointmentURL: string;
-  };
+  member: TeamMember;
 }
 
 const { member } = Astro.props;
 const { firstName } = member;
 
 // Pre-process categories and courses once
-const memberCourses = mainCourseData.filter((course) =>
+const memberCourses = courseData.filter((course) =>
   course.owner?.includes(firstName)
 );
 const categories = [...new Set(memberCourses.map((course) => course.category))];
 
 // Create a map of courses by category for efficient lookup
-const coursesByCategory = categories.reduce(
+const coursesByCategory: Record<string, typeof memberCourses> = categories.reduce(
   (acc, category) => {
     acc[category] = memberCourses.filter((course) =>
       course.category.includes(category)
     );
     return acc;
   },
-  {} as Record<string, typeof mainCourseData>
+  {} as Record<string, typeof memberCourses>
 );
+
+// Check if appointment URL is valid
+const isValidURL = (url: string): boolean => {
+  if (!url) return false;
+  try {
+    const parsedURL = new URL(url);
+    return parsedURL.protocol === "http:" || parsedURL.protocol === "https:";
+  } catch {
+    return false;
+  }
+};
+
+const hasValidAppointmentURL = isValidURL(member.appointmentURL);
 ---
 
 <div
@@ -88,11 +95,13 @@ const coursesByCategory = categories.reduce(
     </button>
   </p>
 
-  <LinkButton
-    url={member.appointmentURL}
-    label={`Maak een afspraak bij ${member.firstName}`}
-    target="_blank"
-  />
+  {hasValidAppointmentURL && (
+    <LinkButton
+      url={member.appointmentURL}
+      label={`Maak een afspraak bij ${member.firstName}`}
+      target="_blank"
+    />
+  )}
 
   <!-- Course Details Dialog -->
   <dialog
@@ -156,34 +165,21 @@ const coursesByCategory = categories.reduce(
 </div>
 
 <script define:vars={{ firstName }}>
-  {
-    // Initialize dialog functionality
-    const dialogInit = () => {
-      const dialog = document.getElementById(`${firstName}Dialog`);
-      const showButton = document.getElementById(`show${firstName}Dialog`);
-      const closeButton = document.getElementById(`close${firstName}Dialog`);
+  // Initialize dialog functionality
+  const dialogInit = () => {
+    const dialog = document.getElementById(`${firstName}Dialog`);
+    const showButton = document.getElementById(`show${firstName}Dialog`);
+    const closeButton = document.getElementById(`close${firstName}Dialog`);
 
-      if (!dialog || !showButton || !closeButton) return;
+    if (!dialog || !showButton || !closeButton) return;
 
-      const handleShow = () => dialog.showModal();
-      const handleClose = () => dialog.close();
+    const handleShow = () => dialog.showModal();
+    const handleClose = () => dialog.close();
 
-      showButton.addEventListener("click", handleShow);
-      closeButton.addEventListener("click", handleClose);
+    showButton.addEventListener("click", handleShow);
+    closeButton.addEventListener("click", handleClose);
+  };
 
-      // Add keyboard handling for accessibility
-      dialog.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") handleClose();
-      });
-
-      // Clean up event listeners
-      return () => {
-        showButton.removeEventListener("click", handleShow);
-        closeButton.removeEventListener("click", handleClose);
-      };
-    };
-
-    // Initialize when the DOM is ready
-    document.addEventListener("DOMContentLoaded", dialogInit);
-  }
+  // Initialize when the DOM is ready
+  document.addEventListener("DOMContentLoaded", dialogInit);
 </script>

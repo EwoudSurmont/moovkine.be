@@ -7,7 +7,10 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), prefetch()],
+  integrations: [tailwind(), prefetch(), sitemap()],
   site: 'https://www.moovkine.be',
 });

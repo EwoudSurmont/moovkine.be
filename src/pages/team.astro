@@ -2,13 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
 import teamData from "../data/teamData";
-
-const { title = "Team" } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout
+  title="Team"
+  description="Ontmoet ons team van gespecialiseerde kinesitherapeuten en psychotherapeuten bij MOOV Kortemark. Sanne Surmont, Jara Gouwy en Tracey Cuylle staan klaar om u te helpen."
+  keywords={[
+    "kinesitherapeut Kortemark",
+    "Sanne Surmont",
+    "Jara Gouwy",
+    "Tracey Cuylle",
+    "team MOOV",
+    "psychotherapeut Kortemark",
+  ]}
+>
   <div class="mx-auto px-8 md:px-16 py-20 md:py-40 text-center">
-    <h1 class="font-sans text-4xl font-bold pb-20 md:pb-40">{title}</h1>
+    <h1 class="font-sans text-4xl font-bold pb-20 md:pb-40">Team</h1>
     <div class="max-w-screen-lg mx-auto flex flex-col gap-12">
       {teamData.map((member) => (
         <TeamCard member={member} />

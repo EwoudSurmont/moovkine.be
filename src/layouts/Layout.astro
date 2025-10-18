@@ -1,16 +1,15 @@
 ---
-export interface Props {
-	title: string;
-}
-
-const siteTitle = "Moov Kinesitherapie";
-const description = "MOOV Kine is een jonge praktijk olv. Sanne Surmont gelegen te Kortemark";
-const { title } = Astro.props;
-const pageTitle = siteTitle.concat(" | ", title);
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
+import type { SEOProps } from "../types/seo";
+import { SITE_CONFIG, getSEODefaults } from "../utils/seo";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import LocalBusinessSchema from "../components/LocalBusinessSchema.astro";
+
+export interface Props extends SEOProps {}
+
+const seoProps = getSEODefaults(Astro.props);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(seoProps.ogImage, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -18,26 +17,48 @@ import Footer from "../components/Footer.astro";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<title>{pageTitle}</title>
-		<meta name="description" content={description}>
-		
-		<meta property="og:title" content={pageTitle}>
-		<meta property="og:description" content={description}>
-		<meta property="og:image" content="/ogimage.jpg">
-		<meta property="og:locale" content="nl_BE">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content={canonicalURL}>
-		
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="theme-color" content="#005D5F">
-		
+
+		<!-- Primary Meta Tags -->
+		<title>{seoProps.title}</title>
+		<meta name="title" content={seoProps.title} />
+		<meta name="description" content={seoProps.description} />
+		{seoProps.keywords.length > 0 && (
+			<meta name="keywords" content={seoProps.keywords.join(", ")} />
+		)}
+		{seoProps.noindex && <meta name="robots" content="noindex" />}
+		{seoProps.nofollow && <meta name="robots" content="nofollow" />}
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={seoProps.title} />
+		<meta property="og:description" content={seoProps.description} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content={SITE_CONFIG.locale} />
+		<meta property="og:site_name" content={SITE_CONFIG.name} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={seoProps.title} />
+		<meta name="twitter:description" content={seoProps.description} />
+		<meta name="twitter:image" content={ogImageURL} />
+
+		<!-- Theme & Icons -->
+		<meta name="theme-color" content={SITE_CONFIG.themeColor} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<link rel="canonical" href={canonicalURL}>
-	
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Structured Data -->
+		<LocalBusinessSchema />
+
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
