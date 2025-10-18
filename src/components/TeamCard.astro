@@ -1,18 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import teamData from "../data/teamData";
 import mainCourseData from "../data/mainCourseData";
 import LinkButton from "./LinkButton.astro";
 
 interface Props {
-  firstName: string;
+  member: {
+    firstName: string;
+    lastName: string;
+    img: string;
+    courses: string[];
+    specialisations: string[];
+    appointmentURL: string;
+  };
 }
 
-const { firstName } = Astro.props;
-
-// Move data processing to component initialization
-const member = teamData.find((m) => m.firstName?.includes(firstName));
-if (!member) throw new Error(`Team member ${firstName} not found`);
+const { member } = Astro.props;
+const { firstName } = member;
 
 // Pre-process categories and courses once
 const memberCourses = mainCourseData.filter((course) =>
