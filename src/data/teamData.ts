@@ -37,7 +37,7 @@ const teamData: TeamMember[] = [
     courses: [
       "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
     ],
-    specialisations: ["Psychotherapie"],
+    specialisations: ["Psychologische begeleiding"],
     appointmentURL: "#",
   },
 ];

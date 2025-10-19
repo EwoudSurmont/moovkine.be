@@ -3,7 +3,7 @@ import type { SEOProps } from "../types/seo";
 export const SITE_CONFIG = {
   name: "MOOV",
   url: "https://www.moovkine.be",
-  defaultDescription: "MOOV Kine is een multidisciplinaire groepspraktijk voor kinesitherapie en psychotherapie gelegen te Kortemark. Gespecialiseerd in manuele therapie, sportrevalidatie, zwangerschapsbegeleiding en meer.",
+  defaultDescription: "MOOV Kine is een multidisciplinaire groepspraktijk voor kinesitherapie en psychologische begeleiding gelegen te Kortemark. Gespecialiseerd in manuele therapie, sportrevalidatie, zwangerschapsbegeleiding en meer.",
   defaultOGImage: "/og-image.jpg",
   locale: "nl_BE",
   themeColor: "#005D5F",

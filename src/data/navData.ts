@@ -14,8 +14,8 @@ const navData: NavItem[] = [
     path: "/kinesitherapie/",
   },
   {
-    name: "Psychotherapie",
-    path: "/psychotherapie/",
+    name: "Psychologische begeleiding",
+    path: "/psychologische-begeleiding/",
   },
   {
     name: "Praktische info",
