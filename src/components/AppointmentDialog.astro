@@ -1,16 +1,21 @@
 ---
 // AppointmentDialog component - allows users to choose between appointment types
+interface Props {
+  uniqueId?: string;
+}
+
+const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` } = Astro.props;
 ---
 
 <button
-  id="showAppointmentDialog"
+  id={`showAppointmentDialog-${uniqueId}`}
   class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0 transition-colors duration-200"
 >
   Maak een afspraak
 </button>
 
 <dialog
-  id="appointmentDialog"
+  id={`appointmentDialog-${uniqueId}`}
   class="max-w-screen-sm mx-auto rounded m-8 p-0 backdrop:bg-black backdrop:opacity-50"
   closedby="any"
 >
@@ -18,7 +23,7 @@
     <h3 class="font-bold text-xl grow">Kies uw type afspraak</h3>
     <button
       class="w-6 h-6"
-      id="closeAppointmentDialog"
+      id={`closeAppointmentDialog-${uniqueId}`}
       aria-label="Close dialog"
     >
       <svg
@@ -72,11 +77,11 @@
   </div>
 </dialog>
 
-<script>
+<script define:vars={{ uniqueId }}>
   const appointmentDialogInit = () => {
-    const dialog = document.getElementById("appointmentDialog") as HTMLDialogElement;
-    const showButton = document.getElementById("showAppointmentDialog");
-    const closeButton = document.getElementById("closeAppointmentDialog");
+    const dialog = document.getElementById(`appointmentDialog-${uniqueId}`);
+    const showButton = document.getElementById(`showAppointmentDialog-${uniqueId}`);
+    const closeButton = document.getElementById(`closeAppointmentDialog-${uniqueId}`);
 
     if (!dialog || !showButton || !closeButton) return;
 
