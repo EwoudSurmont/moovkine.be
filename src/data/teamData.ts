@@ -38,7 +38,7 @@ const teamData: TeamMember[] = [
       "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
     ],
     specialisations: ["Psychologische begeleiding"],
-    appointmentURL: "#",
+    appointmentURL: "https://bookings.crossuite.app/a9035375-6275-4ddf-ac8c-44bcb3af53cd",
   },
 ];
 

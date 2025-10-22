@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LinkButton from "../components/LinkButton.astro";
 ---
 
 <Layout
@@ -40,11 +41,11 @@ import Layout from "../layouts/Layout.astro";
         telefonisch of via het online platform waar u eerder uw afspraak maakte.
         Laattijdig of niet-geannuleerde afspraken zullen worden aangerekend.
       </p>
-      <a
-        href="https://bookings.crossuite.app/3fa4d9e3-a2bf-4fb9-986f-d6ac284a2aaa"
-        class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0"
-        target="_blank">Maak een afspraak</a
-      >
+      <LinkButton
+        url="https://bookings.crossuite.app/3fa4d9e3-a2bf-4fb9-986f-d6ac284a2aaa"
+        label="Maak een afspraak"
+        target="_blank"
+      />
     </div>
 
     <div class="max-w-screen-lg mx-auto text-left pb-20">
