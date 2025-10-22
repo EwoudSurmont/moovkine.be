@@ -107,6 +107,7 @@ const hasValidAppointmentURL = isValidURL(member.appointmentURL);
   <dialog
     id={`${firstName}Dialog`}
     class="max-w-screen-md mx-auto rounded m-8 p-0"
+    closedby="any"
   >
     <div
       class="p-4 bg-white border-b border-slate-100 flex flex-row items-center"
@@ -173,13 +174,29 @@ const hasValidAppointmentURL = isValidURL(member.appointmentURL);
 
     if (!dialog || !showButton || !closeButton) return;
 
-    const handleShow = () => dialog.showModal();
-    const handleClose = () => dialog.close();
+    const handleShow = () => {
+      dialog.showModal();
+      closeButton.focus(); // Move focus into dialog
+    };
+
+    const handleClose = () => {
+      dialog.close();
+      showButton.focus(); // Return focus to trigger
+    };
 
     showButton.addEventListener("click", handleShow);
     closeButton.addEventListener("click", handleClose);
+
+    // Handle focus return on ANY close (ESC, backdrop, close button)
+    dialog.addEventListener("close", () => {
+      showButton.focus();
+    });
   };
 
   // Initialize when the DOM is ready
-  document.addEventListener("DOMContentLoaded", dialogInit);
+  if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", dialogInit);
+  } else {
+    dialogInit();
+  }
 </script>

@@ -1,0 +1,108 @@
+---
+// AppointmentDialog component - allows users to choose between appointment types
+---
+
+<button
+  id="showAppointmentDialog"
+  class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0 transition-colors duration-200"
+>
+  Maak een afspraak
+</button>
+
+<dialog
+  id="appointmentDialog"
+  class="max-w-screen-sm mx-auto rounded m-8 p-0 backdrop:bg-black backdrop:opacity-50"
+  closedby="any"
+>
+  <div class="p-6 bg-white border-b border-slate-100 flex flex-row items-center">
+    <h3 class="font-bold text-xl grow">Kies uw type afspraak</h3>
+    <button
+      class="w-6 h-6"
+      id="closeAppointmentDialog"
+      aria-label="Close dialog"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="p-6 flex flex-col gap-4">
+    <a
+      href="https://bookings.crossuite.app/3fa4d9e3-a2bf-4fb9-986f-d6ac284a2aaa"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block p-6 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group"
+      data-goatcounter-click="bookings.crossuite.app/kinesitherapie"
+      data-goatcounter-title="Appointment - Kinesitherapie"
+    >
+      <h4 class="text-xl font-bold text-brand-green-dark mb-2">
+        Kinesitherapie
+      </h4>
+      <p class="text-gray-700">
+        Maak een afspraak voor kinesitherapie
+      </p>
+    </a>
+    <p class="text-center">Of</p>
+    <a
+      href="https://bookings.crossuite.app/a9035375-6275-4ddf-ac8c-44bcb3af53cd"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block p-6 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group"
+      data-goatcounter-click="bookings.crossuite.app/psychologische-begeleiding"
+      data-goatcounter-title="Appointment - Psychologische begeleiding"
+    >
+      <h4 class="text-xl font-bold text-brand-green-dark mb-2">
+        Psychologische begeleiding
+      </h4>
+      <p class="text-gray-700">
+        Maak een afspraak voor psychologische begeleiding
+      </p>
+    </a>
+  </div>
+</dialog>
+
+<script>
+  const appointmentDialogInit = () => {
+    const dialog = document.getElementById("appointmentDialog") as HTMLDialogElement;
+    const showButton = document.getElementById("showAppointmentDialog");
+    const closeButton = document.getElementById("closeAppointmentDialog");
+
+    if (!dialog || !showButton || !closeButton) return;
+
+    const handleShow = () => {
+      dialog.showModal();
+      closeButton.focus(); // Move focus into dialog
+    };
+
+    const handleClose = () => {
+      dialog.close();
+      showButton.focus(); // Return focus to trigger
+    };
+
+    showButton.addEventListener("click", handleShow);
+    closeButton.addEventListener("click", handleClose);
+
+    // Handle focus return on ANY close (ESC, backdrop, close button)
+    dialog.addEventListener("close", () => {
+      showButton.focus();
+    });
+  };
+
+  // Initialize when the DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", appointmentDialogInit);
+  } else {
+    appointmentDialogInit();
+  }
+</script>

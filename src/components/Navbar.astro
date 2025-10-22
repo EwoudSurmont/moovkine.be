@@ -2,6 +2,7 @@
 import Bars3 from "astro-heroicons/solid/Bars3.astro";
 import XMark from "astro-heroicons/solid/XMark.astro";
 import navData from "../data/navData";
+import AppointmentDialog from "./AppointmentDialog.astro";
 ---
 
 <header>
@@ -52,16 +53,7 @@ import navData from "../data/navData";
           }
         </div>
         <div>
-          <a
-            href="https://bookings.crossuite.app/3fa4d9e3-a2bf-4fb9-986f-d6ac284a2aaa"
-            class="inline-block text-sm font-bold px-6 py-4 leading-none border rounded text-white bg-brand-green hover:bg-brand-green-dark mt-4 lg:mt-0"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-goatcounter-click="altagenda.crossuite.com/MOOV/"
-            data-goatcounter-title="Appointment"
-          >
-            Maak een afspraak
-          </a>
+          <AppointmentDialog />
         </div>
       </div>
     </div>
