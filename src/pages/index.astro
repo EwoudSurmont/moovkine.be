@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import LinkButton from "../components/LinkButton.astro";
+import AppointmentDialog from "../components/AppointmentDialog.astro";
 ---
 
 <Layout
@@ -81,11 +81,7 @@ import LinkButton from "../components/LinkButton.astro";
         <li>Psychologische begeleiding</li>
       </ul>
       <p class="text-xl">Een behandeling bij MOOV kan enkel op afspraak</p>
-      <LinkButton
-        url="https://bookings.crossuite.app/3fa4d9e3-a2bf-4fb9-986f-d6ac284a2aaa"
-        label="Maak een afspraak"
-        target="_blank"
-      />
+      <AppointmentDialog />
     </div>
   </div>
 </Layout>
