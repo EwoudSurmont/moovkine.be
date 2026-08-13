@@ -20,16 +20,20 @@ const teamData: TeamMember[] = [
       "https://book.crossuite.app/4d7f3eca-f38e-4bc5-87c8-ee1b7281f17c",
   },
   {
-    firstName: "Tracey",
-    lastName: "Cuylle",
-    img: "/img/profo-tracey.jpg",
+    firstName: "Astrid",
+    lastName: "Demeyer",
+    img: "/img/profo-astrid.jpg",
     courses: [
-      "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
+      "Master in de Revalidatiewetenschappen en Kinesitherapie (KU Leuven)",
     ],
-    specialisations: ["Psychologische begeleiding"],
+    specialisations: [
+      "Manuele therapie",
+      "Dry Needling",
+    ],
     appointmentURL:
-      "https://book.crossuite.app/27fb2fa1-d82b-4ab5-aa71-f6f8a39a5161",
+      "https://book.crossuite.app/4d7f3eca-f38e-4bc5-87c8-ee1b7281f17c",
   },
+
 ];
 
 export default teamData;

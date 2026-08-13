@@ -5,7 +5,8 @@ const schema = {
   "@id": "https://www.moovkine.be/#organization",
   name: "MOOV Kinesitherapie",
   alternateName: "MOOV Kine",
-  description: "Multidisciplinaire groepspraktijk voor kinesitherapie en psychotherapie in Kortemark. Gespecialiseerd in manuele therapie, sportrevalidatie, zwangerschapsbegeleiding, dry needling en meer.",
+  description:
+    "Multidisciplinaire groepspraktijk voor kinesitherapie in Kortemark. Gespecialiseerd in manuele therapie, sportrevalidatie, zwangerschapsbegeleiding, dry needling en meer.",
   url: "https://www.moovkine.be",
   telephone: "+32475277353",
   priceRange: "€€",
@@ -35,9 +36,7 @@ const schema = {
       closes: "20:00",
     },
   ],
-  sameAs: [
-    "https://www.facebook.com/MOOVKinesitherapie",
-  ],
+  sameAs: ["https://www.facebook.com/MOOVKinesitherapie"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Kinesitherapie diensten",
@@ -64,14 +63,6 @@ const schema = {
           "@type": "Service",
           name: "Zwangerschapsbegeleiding",
           description: "Pre- en postnatale begeleiding",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Psychotherapie",
-          description: "Psychologische begeleiding en therapie",
         },
       },
     ],

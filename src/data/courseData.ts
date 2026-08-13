@@ -352,39 +352,52 @@ const courseData: Course[] = [
     category: "Manuele therapie",
   },
   {
-    title: "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
-    year: "2013",
-    school: "Katho (Kortrijk)",
-    owner: "Tracey",
-    category: "Psychologische begeleiding",
+    title:
+      "Afstudeerrichting Manuele Therapie (2024, KU Leuven)",
+    year: "2024",
+    school: "KU Leuven",
+    owner: "Astrid",
+    category: "Manuele therapie",
   },
   {
-    title: "Wellnessconsulente (Health & Coaching)",
-    year: "2013",
-    school: "Katho (Kortrijk)",
-    owner: "Tracey",
-    category: "Psychologische begeleiding",
+    title:
+      "Afstudeerrichting Manuele Therapie (2024, KU Leuven)",
+    year: "2024",
+    school: "KU Leuven",
+    owner: "Astrid",
+    category: "Manuele therapie",
   },
   {
-    title: "Mindfulness",
-    year: "2012",
-    school: "iAM",
-    owner: "Tracey",
-    category: "Psychologische begeleiding",
+    title:
+      "Manuele therapie IMFT",
+    year: "2025 - 2027",
+    school: "IMFT",
+    owner: "Astrid",
+    category: "Manuele therapie",
   },
   {
-    title: "ACT-therapie",
+    title:
+      "Basismodule",
+    year: "2024",
+    school: "Trigger",
+    owner: "Astrid",
+    category: "Myofasciale therapie",
+  },
+  {
+    title:
+      "Centrale as",
+    year: "2026",
+    school: "Trigger",
+    owner: "Astrid",
+    category: "Myofasciale therapie",
+  },
+  {
+    title:
+      "E-learning ‘Discovering fasciae’",
     year: "2025",
-    school: "ACT Academy",
-    owner: "Tracey",
-    category: "Psychologische begeleiding",
-  },
-  {
-    title: "Integratieve traumatherapie (in opleiding)",
-    year: "2025",
-    school: "AIHP",
-    owner: "Tracey",
-    category: "Psychologische begeleiding",
+    school: "Physiotutors",
+    owner: "Astrid",
+    category: "Varia",
   },
 ];
 
