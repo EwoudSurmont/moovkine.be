@@ -4,7 +4,9 @@ interface Props {
   uniqueId?: string;
 }
 
-const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` } = Astro.props;
+const {
+  uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}`,
+} = Astro.props;
 ---
 
 <button
@@ -19,7 +21,9 @@ const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` }
   class="max-w-screen-sm mx-auto rounded m-8 p-0 backdrop:bg-black backdrop:opacity-50"
   closedby="any"
 >
-  <div class="p-6 bg-white border-b border-slate-100 flex flex-row items-center">
+  <div
+    class="p-6 bg-white border-b border-slate-100 flex flex-row items-center"
+  >
     <h3 class="font-bold text-xl grow">Kies uw type afspraak</h3>
     <button
       class="w-6 h-6"
@@ -44,7 +48,7 @@ const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` }
 
   <div class="p-6 flex flex-col gap-4">
     <a
-      href="https://bookings.crossuite.app/b522025b-0eea-409a-8b54-35a1693aa252"
+      href="https://book.crossuite.app/4d7f3eca-f38e-4bc5-87c8-ee1b7281f17c"
       target="_blank"
       rel="noopener noreferrer"
       class="block p-6 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group"
@@ -54,13 +58,11 @@ const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` }
       <h4 class="text-xl font-bold text-brand-green-dark mb-2">
         Kinesitherapie
       </h4>
-      <p class="text-gray-700">
-        Maak een afspraak voor kinesitherapie
-      </p>
+      <p class="text-gray-700">Maak een afspraak voor kinesitherapie</p>
     </a>
     <p class="text-center">Of</p>
     <a
-      href="https://bookings.crossuite.app/a9035375-6275-4ddf-ac8c-44bcb3af53cd"
+      href="https://book.crossuite.app/27fb2fa1-d82b-4ab5-aa71-f6f8a39a5161"
       target="_blank"
       rel="noopener noreferrer"
       class="block p-6 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group"
@@ -80,8 +82,12 @@ const { uniqueId = `appointment-${Math.random().toString(36).substring(2, 9)}` }
 <script define:vars={{ uniqueId }}>
   const appointmentDialogInit = () => {
     const dialog = document.getElementById(`appointmentDialog-${uniqueId}`);
-    const showButton = document.getElementById(`showAppointmentDialog-${uniqueId}`);
-    const closeButton = document.getElementById(`closeAppointmentDialog-${uniqueId}`);
+    const showButton = document.getElementById(
+      `showAppointmentDialog-${uniqueId}`,
+    );
+    const closeButton = document.getElementById(
+      `closeAppointmentDialog-${uniqueId}`,
+    );
 
     if (!dialog || !showButton || !closeButton) return;
 

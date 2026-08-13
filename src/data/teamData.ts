@@ -17,7 +17,7 @@ const teamData: TeamMember[] = [
       "Kinecoach Obesitas ©",
     ],
     appointmentURL:
-      "https://bookings.crossuite.app/b522025b-0eea-409a-8b54-35a1693aa252",
+      "https://book.crossuite.app/4d7f3eca-f38e-4bc5-87c8-ee1b7281f17c",
   },
   {
     firstName: "Tracey",
@@ -27,7 +27,8 @@ const teamData: TeamMember[] = [
       "Bachelor in de Toegepaste Psychologie; afstudeerrichting klinische psychologie",
     ],
     specialisations: ["Psychologische begeleiding"],
-    appointmentURL: "https://bookings.crossuite.app/a9035375-6275-4ddf-ac8c-44bcb3af53cd",
+    appointmentURL:
+      "https://book.crossuite.app/27fb2fa1-d82b-4ab5-aa71-f6f8a39a5161",
   },
 ];
 
