@@ -391,6 +391,30 @@ const courseData: Course[] = [
     owner: "Astrid",
     category: "Varia",
   },
+  {
+    title:
+      "Lichamelijke opvoeding en bewegingswetenschappen",
+    year: "2019-2024",
+    school: "UGent",
+    owner: "Gilliana",
+    category: "Varia",
+  },
+  {
+    title:
+      "Sports Nutrition",
+    year: "2023-2024",
+    school: "Han University of applied sciences, Nijmegen",
+    owner: "Gilliana",
+    category: "Varia",
+  },
+  {
+    title:
+      "Voedings-en dieetkunde(Afstudeerrichting sport)",
+    year: "2024-2026",
+    school: "Han University of applied sciences, Nijmegen",
+    owner: "Gilliana",
+    category: "Varia",
+  },
 ];
 
 export default courseData;
