@@ -361,14 +361,6 @@ const courseData: Course[] = [
   },
   {
     title:
-      "Afstudeerrichting Manuele Therapie (2024, KU Leuven)",
-    year: "2024",
-    school: "KU Leuven",
-    owner: "Astrid",
-    category: "Manuele therapie",
-  },
-  {
-    title:
       "Manuele therapie IMFT",
     year: "2025 - 2027",
     school: "IMFT",
